@@ -20,14 +20,11 @@
 	  <!-- 启用注解 -->
 	<context:annotation-config />
    
- 	<!-- 启动组件扫描，排除@Controller组件，该除@Controller组件由SpringMVC配置文件扫描 -->
+   <!-- 启动组件扫描，排除@Controller组件，该除@Controller组件由SpringMVC配置文件扫描 -->
 	<context:component-scan base-package="com.jiuyuvip" use-default-filters="true">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
- 	
-	 <!-- 启用缓存注解功能，这个是必须的，否则注解不会生效，另外，该注解一定要声明在spring主配置文件中才会生效 -->    
-    <cache:annotation-driven cache-manager="cacheManager" />
-       
+
      <!-- 引入jdbc配置文件 -->    
      <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
         <property name="locations">  
@@ -89,48 +86,6 @@
 	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">   
     	<property name="dataSource" ref="dataSource"></property>
  	</bean>
-   
-     <!-- redis数据源 -->  
-    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">  
-        <property name="maxIdle" value="${redis.maxIdle}" />  
-        <property name="maxTotal" value="${redis.maxTotal}" />  
-        <property name="maxWaitMillis" value="${redis.MaxWaitMillis}" />  
-        <property name="testOnBorrow" value="${redis.testOnBorrow}" />  
-    </bean>  
- 	<!-- Spring-redis连接池管理工厂 -->
-    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <!-- IP地址 -->
-        <property name="hostName" value="${redis.host}" />
-        <!-- 端口号 -->
-        <property name="port" value="${redis.port}" />
-        <!-- 超时时间 -->
-        <property name="timeout" value="${redis.timeout}" />
-        <property name="poolConfig" ref="poolConfig" />
-    </bean> 
-     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"  >
-     	 <property name="enableTransactionSupport" value="false"/><!-- 配置true可以使用transactional控制事务，spring已经提供支持 --> 
-         <property name="connectionFactory" ref="jedisConnectionFactory" />  
-         <property name="keySerializer" >  
-             <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />  
-         </property>  
-         <property name="valueSerializer" >  
-             <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />  
-         </property>  
-   </bean>  
- 
-                      
-  <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">    
-        <property name="caches">    
-              <set>    
-                   <bean class="com.jiuyuvip.redis.RedisUtil">    
-                           <property name="redisTemplate" ref="redisTemplate" /> 
-                           <property name="name" value="User"/>  
-                    </bean>  
-               </set>    
-        </property>    
-   </bean>
-    
- 
-   
-    
+ 	
+
 </beans> 

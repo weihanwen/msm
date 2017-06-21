@@ -77,7 +77,7 @@ public class RedisUtil implements Cache{
      */
     @Override    
     public ValueWrapper get(Object key) {  
-    	System.out.println(key.toString());
+    	System.out.println("»º´æµÄkeyÖµ£º"+key.toString());
         Object object = null;  
         try {
     	   ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();  

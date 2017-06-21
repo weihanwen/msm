@@ -3,7 +3,7 @@ package com.jiuyuvip.dao;
 public interface DAO {
 	
 	/**
-	 * 保存对象
+	 * 淇濆瓨瀵硅薄
 	 * @param str
 	 * @param obj
 	 * @return
@@ -12,7 +12,7 @@ public interface DAO {
 	public Object save(String str, Object obj) throws Exception;
 	
 	/**
-	 * 修改对象
+	 * 淇敼瀵硅薄
 	 * @param str
 	 * @param obj
 	 * @return
@@ -21,7 +21,7 @@ public interface DAO {
 	public Object update(String str, Object obj) throws Exception;
 	
 	/**
-	 * 删除对象 
+	 * 鍒犻櫎瀵硅薄 
 	 * @param str
 	 * @param obj
 	 * @return
@@ -30,7 +30,7 @@ public interface DAO {
 	public Object delete(String str, Object obj) throws Exception;
 
 	/**
-	 * 查找对象
+	 * 鏌ユ壘瀵硅薄
 	 * @param str
 	 * @param obj
 	 * @return
@@ -39,7 +39,7 @@ public interface DAO {
 	public Object findForObject(String str, Object obj) throws Exception;
 
 	/**
-	 * 查找对象
+	 * 鏌ユ壘瀵硅薄
 	 * @param str
 	 * @param obj
 	 * @return
@@ -48,7 +48,7 @@ public interface DAO {
 	public Object findForList(String str, Object obj) throws Exception;
 	
 	/**
-	 * 查找对象封装成Map
+	 * 鏌ユ壘瀵硅薄灏佽鎴怣ap
 	 * @param s
 	 * @param obj
 	 * @return
