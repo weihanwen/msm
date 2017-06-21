@@ -15,7 +15,7 @@
         <param-value>
         	classpath:ApplicationContext.xml 
         	classpath:spring/ApplicationContext-redis.xml 
-        	<!-- classpath:spring/ApplicationContext-dubbo.xml -->
+        	classpath:spring/ApplicationContext-dubbo.xml  
          </param-value>  
     </context-param>  
     <!-- 设计路径变量值 -->  
